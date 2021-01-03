@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="scale.svg"
+   xml:space="preserve"
+   style="enable-background:new 0 0 203.544 203.544;"
+   viewBox="0 0 203.544 203.544"
+   y="0px"
+   x="0px"
+   id="Capa_1"
+   version="1.1"><metadata
+   id="metadata43"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs41" /><sodipodi:namedview
+   inkscape:current-layer="Capa_1"
+   inkscape:window-maximized="1"
+   inkscape:window-y="-8"
+   inkscape:window-x="-8"
+   inkscape:cy="66.501546"
+   inkscape:cx="103.25346"
+   inkscape:zoom="1.0440003"
+   inkscape:snap-global="false"
+   inkscape:snap-page="true"
+   inkscape:snap-text-baseline="true"
+   inkscape:snap-center="true"
+   inkscape:snap-object-midpoints="true"
+   inkscape:snap-midpoints="true"
+   inkscape:snap-smooth-nodes="true"
+   inkscape:snap-intersection-paths="true"
+   inkscape:object-paths="true"
+   inkscape:snap-bbox-midpoints="true"
+   inkscape:snap-bbox-edge-midpoints="true"
+   inkscape:bbox-nodes="true"
+   inkscape:bbox-paths="true"
+   inkscape:snap-bbox="true"
+   showgrid="false"
+   id="namedview39"
+   inkscape:window-height="1017"
+   inkscape:window-width="1920"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff" />
+<g
+   transform="matrix(0.62889171,0.62889171,-0.62889171,0.62889171,101.77156,-26.235476)"
+   id="g6">
+	<g
+   id="g4">
+		<path
+   id="path2"
+   d="M 41.717,0 0.002,41.722 161.823,203.543 203.542,161.824 Z m 0,8.049 153.78,153.776 -33.673,33.673 -4.452,-4.459 23.245,-23.255 c 0.92,-0.913 0.92,-2.391 0,-3.303 -0.913,-0.913 -2.391,-0.923 -3.303,0 l -23.255,23.245 -7.233,-7.226 14.974,-14.977 c 0.916,-0.913 0.916,-2.394 0,-3.307 -0.92,-0.923 -2.387,-0.923 -3.307,0 l -14.977,14.97 -5.973,-5.98 14.974,-14.967 c 0.905,-0.913 0.905,-2.405 0,-3.314 -0.923,-0.913 -2.405,-0.913 -3.321,0 l -14.967,14.967 -5.73,-5.726 14.97,-14.97 c 0.916,-0.913 0.916,-2.391 0,-3.303 -0.913,-0.923 -2.391,-0.923 -3.31,0 l -14.974,14.97 -6.471,-6.488 23.252,-23.245 c 0.913,-0.923 0.913,-2.405 0,-3.314 -0.923,-0.913 -2.398,-0.913 -3.314,0 l -23.248,23.255 -4.477,-4.481 15.729,-15.718 c 0.913,-0.913 0.913,-2.391 -0.011,-3.314 -0.909,-0.913 -2.387,-0.913 -3.303,0 l -15.725,15.729 -5.977,-5.98 15.722,-15.729 c 0.916,-0.913 0.916,-2.391 0,-3.303 -0.913,-0.923 -2.391,-0.923 -3.303,0 l -15.729,15.718 -5.726,-5.726 15.722,-15.718 c 0.916,-0.923 0.916,-2.401 0,-3.314 -0.916,-0.913 -2.398,-0.913 -3.31,0 L 89.291,122.953 82.745,116.407 106,93.147 c 0.913,-0.913 0.905,-2.391 -0.011,-3.303 -0.913,-0.913 -2.394,-0.913 -3.303,-0.011 l -23.255,23.259 -7.226,-7.229 14.967,-14.977 c 0.916,-0.913 0.916,-2.391 -0.011,-3.303 -0.902,-0.923 -2.384,-0.913 -3.296,0 L 68.891,102.55 62.907,96.57 77.884,81.603 c 0.905,-0.913 0.905,-2.401 0,-3.303 -0.916,-0.923 -2.394,-0.923 -3.307,-0.011 L 59.611,93.265 53.881,87.528 68.844,72.561 c 0.92,-0.913 0.913,-2.391 0,-3.314 -0.905,-0.909 -2.387,-0.909 -3.303,0 L 50.575,84.225 44.094,77.751 67.349,54.492 c 0.905,-0.913 0.905,-2.401 -0.004,-3.314 -0.916,-0.913 -2.398,-0.913 -3.314,0 L 40.786,74.433 36.316,69.956 52.034,54.238 c 0.913,-0.913 0.913,-2.391 0,-3.303 -0.916,-0.923 -2.394,-0.923 -3.314,0 L 32.999,66.653 27.026,60.676 42.744,44.958 c 0.916,-0.923 0.916,-2.401 0,-3.314 -0.913,-0.913 -2.391,-0.913 -3.31,0 L 23.722,57.362 17.985,51.636 33.707,35.907 c 0.916,-0.902 0.916,-2.384 0,-3.303 -0.916,-0.913 -2.394,-0.913 -3.307,0 L 14.672,48.332 8.055,41.704 Z"
+   style="fill:#010002" />
+	</g>
+</g>
+<g
+   id="g8">
+</g>
+<g
+   id="g10">
+</g>
+<g
+   id="g12">
+</g>
+<g
+   id="g14">
+</g>
+<g
+   id="g16">
+</g>
+<g
+   id="g18">
+</g>
+<g
+   id="g20">
+</g>
+<g
+   id="g22">
+</g>
+<g
+   id="g24">
+</g>
+<g
+   id="g26">
+</g>
+<g
+   id="g28">
+</g>
+<g
+   id="g30">
+</g>
+<g
+   id="g32">
+</g>
+<g
+   id="g34">
+</g>
+<g
+   id="g36">
+</g>
+</svg>
