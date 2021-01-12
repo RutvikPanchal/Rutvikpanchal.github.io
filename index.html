@@ -415,9 +415,7 @@
               </a>
             </div>
             <img src="assets/svg/mail.svg" width="60px" />
-            <a
-              href="#"
-              style="
+            <div style="
                 display: block;
                 color: #ffffff;
                 text-decoration: none;
@@ -428,10 +426,12 @@
                 padding: 10px 28px;
                 border-radius: 8px;
                 margin-top: 20px;
+                cursor: pointer;
               "
+              onclick="myFunction()"
             >
               Get in Touch
-            </a>
+          </div>
           </div>
           <div
             style="
@@ -443,19 +443,19 @@
               background: #161f31;
             "
           >
-            <a href="#" style="margin-right: 20px">
+            <a href="https://www.linkedin.com/in/rutvik-panchal-729913160/" target="_blank" style="margin-right: 20px">
               <img
                 src="assets/svg/linkedin.svg"
                 style="width: 32px"
               />
             </a>
-            <a href="https://github.com/RutvikPanchal" style="margin-right: 20px">
+            <a href="https://github.com/RutvikPanchal" target="_blank" style="margin-right: 20px">
               <img
                 src="assets/svg/github.svg"
                 style="width: 36px"
               />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/rutvikpanchal18/" target="_blank">
               <img
                 src="assets/svg/instagram.svg"
                 style="width: 44px"
@@ -478,5 +478,11 @@
         </div>
       </div>
     </div>
+  <script>
+    function myFunction() {
+      navigator.clipboard.writeText("rutvikpanchal18@gmail.com");
+      alert("email address copied to clipboard");
+    }
+  </script>
   </body>
 </html>
