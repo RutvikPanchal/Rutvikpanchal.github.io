@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Random Array</title>
+
+    <link rel="shortcut icon" href="https://rutvikpanchal.github.io/assets/img/SandBox_B_128.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <style>
+        .btn{
+            max-width: 240px;
+        }
+
+        input{
+            width: 6rem;
+        }
+        input:focus{
+            outline: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgb(104, 104, 104);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(173, 173, 173);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(80, 80, 80);
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <div class="container mt-4">
+        <div class="display-6 mb-4">Unique Random Generation</div>
+        <div class="ms-2 mt-1">
+            Min:<input type="number" class="bg-dark text-light m-2 mb-0 ps-2" style="border: 1px solid #ffffff; border-radius: 3px;" id="min" onchange="handleMin(this)"/>
+            <br />
+            Max:<input type="number" class="bg-dark text-light m-2 mb-0 ps-2" style="border: 1px solid #ffffff; border-radius: 3px;" id="max" onchange="handleMax(this)"/>(inclusive) 
+            <br />
+            BufferSize:<input type="number" class="bg-dark text-light m-2 mb-0 ps-2" style="border: 1px solid #ffffff; border-radius: 3px;" id="buffer" onchange="handleBuffer(this)"/>
+            <span class="text-muted"><span class="text-light">Increasing</span> the value = <span class="text-light">More randomness</span> but more memory usage (value of ~5000 preffered)</span>
+        </div>
+        <div class="d-flex row-cols-auto mt-4">
+            <button class="btn btn-outline-light col me-2" id="randomButton">Random Number</button>
+            <button class="btn btn-outline-light col me-2" id="generateAll">Generate All</button>
+            <button class="btn btn-outline-light col" id="sortBtn">Sort Array</button>
+        </div>
+        <div class="text-white-50 my-4">
+            Please note that the array generation takes order of milliseconds but DOM manipulation is resource intensive.
+            <br />
+            Time took for One Buffer generation : <span id="ms" class="text-light"></span>
+        </div>
+        <div class="row">
+            <div class="col me-4 display-6 mt-4" id="output" style="overflow-y: scroll; overflow-x: hidden; height: 500px;"></div>
+            <div class="col ms-4 display-6 mt-4" id="outputOne" style="overflow-y: scroll; overflow-x: hidden; height: 500px;"></div>
+        </div>
+        <div class="mt-4"><i class="bi bi-arrow-down me-2"></i>Scroll down</div>
+
+        <div class="row">
+            <div class="mt-4 col-lg">
+                <div class="display-6">Algorithm</div>
+                <pre>
+                    <code style="color:#d63384">
+<span class="text-muted">// Main array that stores the shuffled values</span>
+let randomArray = [];
+
+<span class="text-muted">// Generating and Shuffling the array to be indexed later</span>
+for (let i = 1; i <= 10; i++) {
+    randomArray.push(i);
+}
+for (let i = 0; i < randomArray.length; i++) {
+    let randomIndex = Math.floor(Math.random() * ((10 + 1) - (i + 1)) + i);
+
+    let swapTemp = randomArray[i];
+    randomArray[i] = randomArray[randomIndex];
+    randomArray[randomIndex] = swapTemp;
+}
+
+<span class="text-muted">// Random numbers can now be accessed with a random seed (seed > 0 && seed < maxValue)</span>
+randomArray[seed];
+                    </code>
+                </pre>
+            </div>
+            <div class="mt-4 col-lg">
+                <div class="display-6 mb-2">Time and Space Complexity</div>
+                <p class="text-muted">
+                    Here as the randomized array is generated once using a single for loop of n intergers,
+                    its respective Time and Space complexity is of order of O(n). Thus for generation of the array,
+                </p>
+                <p class="mt-2">
+                    Array Generation : O(n) Time and Space Complexity
+                </p>
+                <p class="text-muted">
+                    Accessing the random values simply means indexing the randomized array using a seed variable and thus its Time and Space Complexity is,
+                </p>
+                <p class="mt-2">
+                    Random Value Accessing : O(1) Time and Space Complexity
+                </p>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="mt-4 col-lg">
+                <div class="display-6 mb-2">Memory Optimization</div>
+                <p class="text-muted">
+                    Generation of array at the beginning can take huge chunk of memory if N grows very large.
+                    To overcome that issue the entire array can be divided into buffers of N / (buffers count)
+                    which are created and discarded during runtime as needed. Thus modified algorithm looks as follows
+                </p>
+                <pre>
+                    <code style="color:#d63384">
+<span class="text-muted">// Main Class</span>
+class UniqueRandom {
+    <span class="text-muted">// Parameters</span>
+    min = 0;
+    max = 10000;
+    bufferSize = 5000;
+    bufferIndex = 0;
+
+    <span class="text-muted">// Buffer element for storing a shuffled intergers</span>
+    buffer = [];
+
+    <span class="text-muted">// Generates a buffer of size mentioned by bufferSize parameter which is then shuffled up</span>
+    <span class="text-muted">// This is done to improve performance and reduce memory usage</span>
+    <span class="text-muted">// Increasing the buffer size increases the Randomness but also increases memory usage</span>
+    generateBuffer(bufferIndexVal) {
+        this.buffer = [];
+
+        for (let i = 0; i < this.bufferSize; i++) {
+            if ((this.bufferSize * bufferIndexVal + i + this.min) <= this.max) {
+                this.buffer.push(this.bufferSize * bufferIndexVal + i + this.min);
+            }
+        }
+
+        for (let i = 0; i < this.buffer.length; i++) {
+            let randomIndex = Math.floor(Math.random() * (this.buffer.length - i) + i);
+
+            let swapTemp = this.buffer[i];
+            this.buffer[i] = this.buffer[randomIndex];
+            this.buffer[randomIndex] = swapTemp;
+        }
+    }
+
+    <span class="text-muted">// Returns a unique random number between min and max which is also mapped to a seed value</span>
+    <span class="text-muted">// Seed value must be unique for unique random number</span>
+    uniqueRandom(seed) {
+        // Populate the buffer based on the seed value
+        if (!(seed >= this.bufferIndex * this.bufferSize && seed < (this.bufferIndex + 1) * this.bufferSize)) {
+            this.bufferIndex = Math.floor(seed / this.bufferSize);
+            this.generateBuffer(this.bufferIndex);
+        }
+        
+        return this.buffer[(seed % this.bufferSize)];
+    }
+
+    <span class="text-muted">// Validates the minimun, maximun and bufferSize parameters</span>
+    validate(){
+        if(this.min >= this.max){
+            this.min = this.max - 1;
+        }
+        if(this.bufferSize > this.max){
+            this.bufferSize = this.max;
+        }
+        if(this.bufferSize <= 0){
+            this.bufferSize = this.max;
+        }
+    }
+}
+
+let array = [];
+
+const uniqueRandom = new UniqueRandom();
+
+<span class="text-muted">// Vaidate parameters</span>
+uniqueRandom.validate();
+
+<span class="text-muted">// Initialize the buffer</span>
+uniqueRandom.generateBuffer(0);
+
+for (let i = 0; i <= Math.abs(uniqueRandom.max - uniqueRandom.min); i++) {
+    array.push(uniqueRandom.uniqueRandom(i));
+}
+
+<span class="text-muted">// Stream of random numbers</span>
+console.log(array);
+
+<span class="text-muted">// Stream of random numbers sorted for validation</span>
+array.sort((a, b) => a - b);
+console.log(array);
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3" style="background-color: #17191c;">
+        <div class="container">
+            <span class="text-muted">© Copyright <strong>Rutvik Panchal</strong>. All Rights Reserved</span>
+        </div>
+    </footer>
+
+    <script>
+        var min = 0;
+        var max = 10000;
+        var bufferIndex = 0;
+        var bufferSize = 5000;
+
+        var buffer = [];
+
+        function generateArray(bufferIndexVal){
+            buffer = [];
+
+            for (let i = 0; i < bufferSize; i++) {
+                if((bufferSize * bufferIndexVal + i + min) <= max){
+                    buffer.push(bufferSize * bufferIndexVal + i + min);
+                }
+            }
+    
+            for (let i = 0; i < buffer.length; i++) {
+                let randomIndex = Math.floor(Math.random() * (buffer.length - i) + i);
+                
+                let swapTemp = buffer[i];
+                buffer[i] = buffer[randomIndex];
+                buffer[randomIndex] = swapTemp;
+            }
+        }
+
+        var t0 = performance.now();
+        generateArray(bufferIndex);
+        var t1 = performance.now();
+
+        document.querySelector("#ms").innerText = (t1 - t0).toFixed(2) + ' ms';
+
+        window.onload = () => {
+            document.querySelector("#min").value = min;
+            document.querySelector("#max").value = max;
+            document.querySelector("#buffer").value = bufferSize;
+        };
+
+        function handleMin(minDOM){
+            if(parseInt(minDOM.value)){
+                min = parseInt(minDOM.value);
+            }
+            if(minDOM.value == '0'){
+                min = 0;
+            }
+            if(min >= max){
+                min = max - 1;
+                minDOM.value = min;
+            }
+            if(bufferSize >= max){
+                bufferSize = max;
+                document.querySelector("#buffer").value = bufferSize;
+            }
+        }
+
+        function handleMax(maxDOM){
+            if(parseInt(maxDOM.value)){
+                max = parseInt(maxDOM.value);
+            }
+            if(max <= min){
+                max = min + 1;
+                maxDOM.value = max;
+            }
+            if(bufferSize >= max){
+                bufferSize = max;
+                document.querySelector("#buffer").value = bufferSize;
+            }
+        }
+
+        function handleBuffer(bufferDOM){
+            if(parseInt(bufferDOM.value)){
+                bufferSize = parseInt(bufferDOM.value);
+            }
+            if(bufferSize >= max){
+                bufferSize = max;
+                bufferDOM.value = bufferSize;
+            }
+        }
+
+        function uniqueRandom(seed){
+            if(!(seed >= bufferIndex * bufferSize && seed < (bufferIndex + 1) * bufferSize)){
+                bufferIndex = Math.floor(seed / bufferSize);
+                generateArray(bufferIndex);
+            }
+
+            return buffer[(seed % bufferSize)];
+        }
+
+        const output = document.querySelector('#output');
+        var counter = 0;
+        document.querySelector('#randomButton').addEventListener('click', () => {
+            counter++;
+            if(counter >= Math.abs(max - min)){
+                counter = 0;
+            }
+            output.innerText = uniqueRandom(counter);
+        });
+
+        document.querySelector('#generateAll').addEventListener('click', () => {
+            let outputString = '';
+            for(let i = 0; i <= Math.abs(max - min); i++){
+                outputString += uniqueRandom(i).toString() + '\n';
+            }
+
+            output.innerText = outputString;
+        });
+
+        const outputOne = document.querySelector('#outputOne');
+        document.querySelector('#sortBtn').addEventListener('click', () => {
+            let outputString = '';
+            let array = [];
+            for(let i = 0; i <= Math.abs(max - min); i++){
+                array.push(uniqueRandom(i).toString());
+            }
+
+            array.sort((a, b) => a - b);
+
+            for(let i = 0; i < array.length; i++){
+                outputString += array[i] + '\n';
+            }
+            outputOne.innerText = outputString;
+
+            generateArray(bufferIndex);
+        });
+    </script>
+</body>
+</html>
